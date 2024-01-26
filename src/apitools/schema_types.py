@@ -78,3 +78,6 @@ class Default(SchemaType):
     def __init__(self, val_type: T, default: T, *args: Any, **kwargs: Any) -> None:
         self.type = val_type
         self.value = default
+
+
+print(isinstance(Null(), Null))
