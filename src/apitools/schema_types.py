@@ -61,7 +61,12 @@ class Null:
 
 
 class SchemaType:
-    pass
+    def is_valid(self, other: Any) -> bool:
+        try:
+            self.type(other)  # type: ignore
+            return True
+        except Exception:
+            return False
 
 
 class Required(SchemaType):
@@ -78,6 +83,3 @@ class Default(SchemaType):
     def __init__(self, val_type: T, default: T, *args: Any, **kwargs: Any) -> None:
         self.type = val_type
         self.value = default
-
-
-print(isinstance(Null(), Null))
